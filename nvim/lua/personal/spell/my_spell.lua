@@ -15,5 +15,7 @@ function ToggleSpanishSpell()
 end
 
 -- Atajos de teclado para activar/desactivar el spell checker de NeoVim
-vim.keymap.set("n", "<Leader>zp", "<Cmd>set spell!<CR>") -- Activo 'spell', i.e. vim.opt.spell = "true"
-vim.keymap.set("n", "<Leader>zs", ToggleSpanishSpell) -- Cambio entre el diccionario español e inglés
+vim.keymap.set("n", "<S-S>", "<Cmd>set spell!<CR>") -- Activo 'spell', i.e. vim.opt.spell = "true"
+vim.keymap.set("n", "<S-T>", ToggleSpanishSpell) -- Cambio entre el diccionario español e inglés
+--vim.keymap.set("n", "<Leader>zz", "<Cmd>set spell!<CR>") -- Activo 'spell', i.e. vim.opt.spell = "true"
+--vim.keymap.set("n", "<Leader>zs", ToggleSpanishSpell) -- Cambio entre el diccionario español e inglés

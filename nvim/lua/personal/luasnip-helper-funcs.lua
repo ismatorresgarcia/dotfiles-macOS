@@ -1,4 +1,4 @@
--- Para evitar repetición excesiva de la función get_visual en los snippets
+-- Para evitar una repetición excesiva de la función get_visual en los snippets
 local M = {}
 
 -- Abreviaciones de los nodos de LuaSnip

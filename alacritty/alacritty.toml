@@ -3,67 +3,17 @@
 # Live config reload (changes require restart)
 live_config_reload = true
 
-# Nord Theme
+# Catppuccin "Macchiato" Theme
 # Copyright (c) 2016-present Sven Greb <development@svengreb.de>
 # This source code is licensed under the MIT license found in the license file.
 
-[colors]
-draw_bold_text_with_bright_colors = true
-
-[colors.bright]
-black = "#4c566a"
-blue = "#81a1c1"
-cyan = "#8fbcbb"
-green = "#a3be8c"
-magenta = "#b48ead"
-red = "#bf616a"
-white = "#eceff4"
-yellow = "#ebcb8b"
-
-[colors.cursor]
-cursor = "#d8dee9"
-text = "#2e3440"
-
-[colors.dim]
-black = "#373e4d"
-blue = "#68809a"
-cyan = "#6d96a5"
-green = "#809575"
-magenta = "#8c738c"
-red = "#94545d"
-white = "#aeb3bb"
-yellow = "#b29e75"
-
-[colors.normal]
-black = "#3b4252"
-blue = "#81a1c1"
-cyan = "#88c0d0"
-green = "#a3be8c"
-magenta = "#b48ead"
-red = "#bf616a"
-white = "#e5e9f0"
-yellow = "#ebcb8b"
-
-[colors.primary]
-background = "#2e3440"
-dim_foreground = "#a5abb6"
-foreground = "#d8dee9"
-
-[colors.footer_bar]
-background = "#434c5e"
-foreground = "#d8dee9"
-
-[colors.search.matches]
-background = "#88c0d0"
-foreground = "CellBackground"
-
-[colors.selection]
-background = "#4c566a"
-text = "CellForeground"
-
-[colors.vi_mode_cursor]
-cursor = "#d8dee9"
-text = "#2e3440"
+import = [
+  # uncomment the flavour you want below:
+  # "~/.config/alacritty/catppuccin-latte.toml"
+  # "~/.config/alacritty/catppuccin-frappe.toml"
+  "~/.config/alacritty/catppuccin-macchiato.toml"
+  # "~/.config/alacritty/catppuccin-mocha.toml"
+]
 
 [cursor]
   # Cursor blinking interval in milliseconds.
@@ -74,6 +24,9 @@ thickness = 0.15
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
 unfocused_hollow = true
+  # If the vi mode cursor style is "None" or not specified, it will fall back to the active value of the normal cursor.
+  # Values for `vi_mode_style`:
+  #     - { <shape>, <blinking> } | "None"
 vi_mode_style = "Beam"
 
 [cursor.style]
@@ -95,14 +48,16 @@ blinking = "Off"
 shape = "Block"
 
 [env]
-TERM = "alacritty"
+TERM = "xterm-256color"
 
 [font]
-size = 20.0
+size = 19.0
 
 [font.normal]
-family = "MesloLGS NF"
+family = "IosevkaTerm Nerd Font Mono"
+# family = "RobotoMono Nerd Font Mono"
 style = "Regular"
+
 
 [font.italic]
 style = "Italic"
@@ -177,7 +132,6 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
   #   - (Windows) powershell
 program = "/opt/homebrew/bin/fish"
 args = ["-l", "-c", "tmux"]
-# - "tmux attach || tmux"
 
 [window]
   # Window decorations
@@ -189,11 +143,24 @@ args = ["-l", "-c", "tmux"]
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background, but no title bar buttons
-decorations = "none"
+decorations = "Buttonless"
+
+  # Window opacity 
+  #
+  # Values for `opacity`:
+  #     - 0.0 to 1.0: The value 0.0 is completely transparent and 1.0 is opaque. Default value is 1.0
+opacity = 0.8
+
+  # Blurred window
+  #
+  # Values for `blur`: 
+  #     - true | false # (works on macOS/KDE Wayland). Default value is false
+blur = true
+
   # Startup Mode (changes require restart)
   #
   # Values for `startup_mode`:
-  #   - Windowed
+  #   - Windowed 
   #   - Maximized
   #   - Fullscreen
   #
@@ -216,7 +183,7 @@ instance = "Alacritty"
   #
   # Specified in number of columns/lines, not pixels.
   # If both are `0`, this setting is ignored.
-columns = 115
+columns = 125
 lines = 32
 
 [window.padding]
@@ -224,13 +191,13 @@ lines = 32
   #
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
-x = 0
-y = 0
+x = 7
+y = 7
 
 [window.position]
   # Window position (changes require restart)
   #
   # Specified in number of pixels.
   # If the position is not set, the window manager will handle the placement.
-x = 75
-y = 565
+x = 60
+y = 115

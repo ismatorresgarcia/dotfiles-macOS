@@ -1,12 +1,10 @@
-local config = require("nvim-surround.config")
-
 -- import surround plugin safely
-local surround_buffer_ok, nvim_surround_tex = pcall(require, "nvim-surround")
+local surround_buffer_ok, nvim_surround_mark = pcall(require, "nvim-surround")
 if not surround_buffer_ok then
   return
 end
 
-nvim_surround_tex.buffer_setup({
+nvim_surround_mark.buffer_setup({
   surrounds = {
     -- ["e"] = {
     --   add = function()
@@ -92,22 +90,3 @@ function PdfAnnots()
 
   vim.fn.chdir(cwd)
 end
-
--- -- LSP menu to preserve vimtex citation data
--- require('cmp').setup.buffer {
---   formatting = {
---     format = function(entry, vim_item)
---         vim_item.menu = ({
---           omni = (vim.inspect(vim_item.menu):gsub('%"', "")),
---           buffer = "[Buffer]",
---           -- formatting for other sources
---           })[entry.source.name]
---         return vim_item
---       end,
---   },
---   sources = {
---     { name = 'omni' },
---     { name = 'buffer' },
---     -- other sources
---   },
--- }
