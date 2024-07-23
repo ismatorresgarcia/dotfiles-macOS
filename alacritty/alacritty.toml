@@ -4,7 +4,7 @@
 live_config_reload = true
 
 # Catppuccin "Macchiato" Theme
-# Copyright (c) 2016-present Sven Greb <development@svengreb.de>
+# Copyright (c) 2021
 # This source code is licensed under the MIT license found in the license file.
 
 import = [
@@ -183,21 +183,21 @@ instance = "Alacritty"
   #
   # Specified in number of columns/lines, not pixels.
   # If both are `0`, this setting is ignored.
-columns = 125
-lines = 32
+columns = 145
+lines = 37
 
 [window.padding]
   # Window padding (changes require restart)
   #
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
-x = 7
-y = 7
+x = 5
+y = 5
 
 [window.position]
   # Window position (changes require restart)
   #
   # Specified in number of pixels.
   # If the position is not set, the window manager will handle the placement.
-x = 60
-y = 115
+x = 50
+y = 100
