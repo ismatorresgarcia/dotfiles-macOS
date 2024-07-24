@@ -7,6 +7,7 @@ return {
     vim.o.timeoutlen = 200
   end,
   opts = {
+    defaults = {},
     spec = {
       {
         -- Nested mappings are allowed and can be added in any order
@@ -16,19 +17,19 @@ return {
         -------------------
         -- MAIN MAPPINGS --
         -------------------
-        { "<leader>b", "<cmd>VimtexCompile<CR>", desc = "build" }, -- vimtex build mapping
-        { "<leader>c", "<cmd>vert sb<CR>", desc = "create split" }, -- vertical split mapping
-        { "<leader>d", "<cmd>update! | bdelete!<CR>", desc = "delete buffer" }, -- delete buffer mapping
-        { "<leader>e", "<cmd>NvimTreeToggle<CR>", desc = "explorer" }, -- nvim-tree mapping
-        { "<leader>i", "<cmd>VimtexTocOpen<CR>", desc = "index" }, -- vimtex index mapping
-        { "<leader>j", "<cmd>clo<CR>", desc = "drop split" }, -- drop split mapping
-        { "<leader>k", "<cmd>on<CR>", desc = "max split" }, -- maximize split mapping
-        { "<leader>q", "<cmd>wa! | qa!<CR>", desc = "quit" }, -- exit mapping
-        { "<leader>u", "<cmd>Telescope undo<CR>", desc = "undo" }, -- undo mapping
-        { "<leader>v", "<cmd>VimtexView<CR>", desc = "view" }, -- vimtex view mapping
-        { "<leader>w", "<cmd>wa!<CR>", desc = "write" }, -- write mapping
+        { "<leader>b", "<cmd>VimtexCompile<CR>", desc = "Build" }, -- vimtex build mapping
+        { "<leader>c", "<cmd>vert sb<CR>", desc = "Create split", icon = "" }, -- vertical split mapping
+        { "<leader>d", "<cmd>update! | bdelete!<CR>", desc = "Delete buffer", icon = "" }, -- delete buffer mapping
+        { "<leader>e", "<cmd>NvimTreeToggle<CR>", desc = "Explorer", icon = "󰙅" }, -- nvim-tree mapping
+        { "<leader>i", "<cmd>VimtexTocOpen<CR>", desc = "Index", icon = "" }, -- vimtex index mapping
+        { "<leader>j", "<cmd>clo<CR>", desc = "Drop split", icon = "" }, -- drop split mapping
+        { "<leader>k", "<cmd>on<CR>", desc = "Max split", icon = "" }, -- maximize split mapping
+        { "<leader>q", "<cmd>wa! | qa!<CR>", desc = "Quit" }, -- exit mapping
+        { "<leader>u", "<cmd>Telescope undo<CR>", desc = "Undo", icon = "" }, -- undo mapping
+        { "<leader>v", "<cmd>VimtexView<CR>", desc = "View", icon = "" }, -- vimtex view mapping
+        { "<leader>w", "<cmd>wa!<CR>", desc = "Write" }, -- write mapping
         -- ACTION MAPPINGS
-        { "<leader>a", group = "ACTIONS" },
+        { "<leader>a", group = "ACTIONS", icon = "󰩕" },
         { "<leader>aa", "<cmd>lua PdfAnnots()<CR>", desc = "annotate" },
         { "<leader>ab", "<cmd>terminal bibexport -o %:p:r.bib %:p:r.aux<CR>", desc = "bib export" },
         { "<leader>ac", "<cmd>:VimtexClearCache All<CR>", desc = "clear vimtex" },
@@ -81,7 +82,7 @@ return {
         --{ "<leader>Fr", "<cmd>TermExec cmd='sudo rebuild switch --flake ~/.dotfiles/'<CR><C-w>l", desc = "rebuild flake" },
         --{ "<leader>Fu", "<cmd>TermExec cmd='sudo flake update'<CR><C-w>j", desc = "update" },
         -- GIT MAPPINGS
-        { "<leader>g", group = "GIT" },
+        { "<leader>g", group = "GIT", icon = "" },
         { "<leader>gb", "<cmd>Telescope git_branches<CR>", desc = "checkout branch" },
         -- { "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
         { "<leader>gd", "<cmd>Gitsigns diffthis HEAD<CR>", desc = "diff" },
@@ -93,13 +94,13 @@ return {
         { "<leader>gp", "<cmd>Gitsigns preview_hunk<CR>", desc = "preview hunk" },
         { "<leader>gt", "<cmd>Gitsigns toggle_current_line_blame<CR>", desc = "toggle blame" },
         -- LIST MAPPINGS
-        { "<leader>L", group = "LIST" },
+        { "<leader>L", group = "LIST", icon = "" },
         { "<leader>Lc", "<cmd>lua HandleCheckbox()<CR>", desc = "checkbox" },
         { "<leader>Ln", "<cmd>AutolistCycleNext<CR>", desc = "next" },
         { "<leader>Lp", "<cmd>AutolistCyclePrev<CR>", desc = "previous" },
         { "<leader>Lr", "<cmd>AutolistRecalculate<CR>", desc = "reorder" },
         -- LSP MAPPINGS
-        { "<leader>l", group = "LSP" },
+        { "<leader>l", group = "LSP", icon = "" },
         { "<leader>lb", "<cmd>Telescope diagnostics bufnr=0<CR>", desc = "buffer diagnostics" },
         { "<leader>lc", "<cmd>lua vim.lsp.buf.code_action()<CR>", desc = "code action" },
         { "<leader>lD", "<cmd>lua vim.lsp.buf.declaration()<CR>", desc = "declaration" },
@@ -115,10 +116,10 @@ return {
         { "<leader>ls", "<cmd>LspRestart<CR>", desc = "restart lsp" },
         { "<leader>lt", "<cmd>LspStart<CR>", desc = "start lsp" },
         -- MARKDOWN MAPPINGS
-        { "<leader>m", group = "MARKDOWN" },
+        { "<leader>m", group = "MARKDOWN", icon = "" },
         { "<leader>mv", "<cmd>Slides<CR>", desc = "view slides" },
         -- PANDOC MAPPINGS
-        { "<leader>p", group = "PANDOC" },
+        { "<leader>p", group = "PANDOC", icon = "󱁥" },
         { "<leader>ph", "<cmd>TermExec cmd='pandoc %:p -o %:p:r.html'<CR>", desc = "html" },
         { "<leader>pl", "<cmd>TermExec cmd='pandoc %:p -o %:p:r.tex'<CR>", desc = "latex" },
         { "<leader>pm", "<cmd>TermExec cmd='pandoc %:p -o %:p:r.md'<CR>", desc = "markdown" },
@@ -131,12 +132,12 @@ return {
         { "<leader>Sl", "<cmd>SessionManager load_session<CR>", desc = "load" },
         { "<leader>Ss", "<cmd>SessionManager save_current_session<CR>", desc = "save" },
         -- SURROUND MAPPINGS
-        { "<leader>s", group = "SURROUND" },
+        { "<leader>s", group = "SURROUND", icon = "󰗅" },
         { "<leader>sc", "<Plug>(nvim-surround-change)", desc = "change" },
         { "<leader>sd", "<Plug>(nvim-surround-delete)", desc = "delete" },
         { "<leader>ss", "<Plug>(nvim-surround-normal)", desc = "surround" },
         -- OPEN TEMPLATE MAPPINGS 
-        { "<leader>t", group = "TEMPLATES" },
+        { "<leader>t", group = "TEMPLATES", icon = "" },
         { "<leader>tb", "<cmd>read ~/.config/nvim/templates/plantilla_beamer1.tex<CR>", desc = "plantilla_beamer1.tex" },
         { "<leader>tc", "<cmd>read ~/.config/nvim/templates/plantilla_beamer2.tex<CR>", desc = "plantilla_beamer2.tex" },
         { "<leader>td", "<cmd>read ~/.config/nvim/templates/plantilla_beamer3.tex<CR>", desc = "plantilla_beamer3.tex" },

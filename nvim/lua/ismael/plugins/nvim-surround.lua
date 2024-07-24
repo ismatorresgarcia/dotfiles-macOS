@@ -4,7 +4,8 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	version = "*", -- Use for stability; omit to use `main` branch for the latest features
 	config = function()
-		require("nvim-surround").setup({
+    local srr = require("nvim-surround")
+		srr.setup({
 			keymaps = {
 				insert = false,
 				insert_line = false,

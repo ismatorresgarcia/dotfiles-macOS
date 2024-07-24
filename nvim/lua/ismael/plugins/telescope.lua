@@ -13,10 +13,9 @@ return {
 		"nvim-tree/nvim-web-devicons", -- VS-Code like icons for the nvim-tree
 	},
 	config = function()
-		local telescope = require("telescope")
-		local actions = require("telescope.actions")
-
-		telescope.setup({
+		local telscp = require("telescope") -- import telescope plugin safely
+		local actions = require("telescope.actions") -- for conciseness
+		telscp.setup({
 			defaults = {
 				path_display = { "truncate " },
 				mappings = {

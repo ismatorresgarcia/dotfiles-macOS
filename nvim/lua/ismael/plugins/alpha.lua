@@ -7,11 +7,11 @@ return {
 		"Shatur/neovim-session-manager", -- manage sessions like folders in VSCode.
 	},
 	config = function()
-		local alpha = require("alpha") -- for conciseness
-		local dashboard = require("alpha.themes.dashboard") -- la pantalla de bienvenida para NeoVim
+		local alpha = require("alpha") -- import alpha plugin safely
+		local dashboard = require("alpha.themes.dashboard") -- for conciseness
 
 		-- Set header
-		local logo = {
+		local logo = { -- for conciseness
 			[[                                                    ]],
 			[[ ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ]],
 			[[ ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ]],
@@ -46,11 +46,11 @@ return {
 		vim.api.nvim_create_autocmd("User", {
 			pattern = "LazyVimStarted",
 			callback = function()
-				local stats = require("lazy").stats()
-				local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+				local stats = require("lazy").stats() -- for conciseness
+				local ms = (0.01 * math.floor(stats.startuptime * 100 + 0.5) ) -- for conciseness
 
 				-- local now = os.date "%d-%m-%Y %H:%M:%S"
-				local version = "   v"
+				local version = "   v" -- for conciseness
 					.. vim.version().major
 					.. "."
 					.. vim.version().minor
@@ -58,8 +58,9 @@ return {
 					.. vim.version().patch
 				-- local fortune = require "alpha.fortune"
 				-- local quote = table.concat(fortune(), "\n")
-				local plugins = "⚡Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
-				local footer = version .. "\t" .. plugins -- .. "\n" .. quote
+				local plugins = "⚡Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms" -- for conciseness
+        -- for conciseness
+				local footer = version .. "\t" .. plugins -- .. "\n" .. quote 
 				dashboard.section.footer.val = footer
 				pcall(vim.cmd.AlphaRedraw)
 			end,

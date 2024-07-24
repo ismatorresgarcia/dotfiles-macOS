@@ -21,10 +21,9 @@ return {
       imap <silent><expr> <C-f> luasnip#choice_active() ? "<Plug>luasnip-next-choice" : "<C-f>"
       smap <silent><expr> <C-f> luasnip#choice_active() ? "<Plug>luasnip-next-choice" : "<C-f>"
     ]])
-
-		-- Variables locales
+		---------------- Variables locales ----------------
 		---------------------------------------------------
-		local ls = require("luasnip")
+		local ls = require("luasnip") -- import the LuaSnip plugin safely
 		local s = ls.snippet
 		local sn = ls.snippet_node
 		local isn = ls.indent_snippet_node

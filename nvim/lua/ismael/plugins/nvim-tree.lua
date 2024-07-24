@@ -3,19 +3,20 @@ return {
 	"nvim-tree/nvim-tree.lua",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
-		local nvimtree = require("nvim-tree")
+		local nvimtr = require("nvim-tree") -- import nvim-tree plugin safely
 
 		-- Las opciones recomendadas por la documentación de nvim-tree
 		vim.g.loaded_netrw = 1
 		vim.g.loaded_netrwPlugin = 1
 
-		local function on_attach(bufnr)
-			local api = require("nvim-tree.api")
+    local HEIGHT_RATIO = 0.8 -- for the floating window height in view.float
+    local WIDTH_RATIO = 0.5 -- for the floating window width in view.float
 
+		local function on_attach(bufnr)
+			local api = require("nvim-tree.api") -- for conciseness
 			local function opts(desc)
 				return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
 			end
-
 			-- custom mappings
 			local keymap = vim.keymap -- for conciseness
 			keymap.set("n", "<CR>", api.node.open.tab, opts("Open"))
@@ -44,69 +45,47 @@ return {
 		end
 
 		-- configure nvim-tree
-		nvimtree.setup({
+		nvimtr.setup({
 			on_attach = on_attach,
-			actions = {
-				open_file = {
-					quit_on_open = true,
-					eject = true,
-					resize_window = true,
-					window_picker = {
-						enable = true,
-						picker = "default",
-						chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
-						exclude = {
-							filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
-							buftype = { "nofile", "terminal", "help" },
-						},
-					},
-				},
-				change_dir = {
-					enable = false,
-					global = false,
-					restrict_above_cwd = false,
-				},
-				use_system_clipboard = true,
-				expand_all = {
-					max_folder_discovery = 300,
-					exclude = {},
-				},
-				file_popup = {
-					open_win_config = {
-						col = 1,
-						row = 1,
-						relative = "cursor",
-						border = "shadow",
-						style = "minimal",
-					},
-				},
-				remove_file = {
-					close_window = true,
-				},
+			sort = {
+				sorter = "name",
+				folders_first = true,
+				files_first = false,
 			},
-			git = {
-				enable = true,
-				show_on_dirs = true,
-				-- show_on_open_dirs = true,
-				disable_for_dirs = {},
-				timeout = 500,
-				cygwin_support = false,
-			},
-			filters = {
-				git_ignored = false,
-				dotfiles = false,
-				git_clean = false,
-				no_buffer = false,
-				no_bookmark = false,
-				-- custom = { ".git" },
-				-- custom = { ".DS_Store" },
-				exclude = {},
-			},
-			update_focused_file = {
-				enable = true,
-				update_root = true,
-				ignore_list = {},
-				update_cwd = true,
+			view = {
+				centralize_selection = false,
+				cursorline = true,
+				debounce_delay = 15,
+				--side = "left",
+				preserve_window_proportions = false,
+        number = true,
+				relativenumber = true,
+				signcolumn = "yes",
+				--width = 30,
+        float = {
+          enable = true,
+          open_win_config = function()
+            local screen_w = vim.opt.columns:get()
+            local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
+            local window_w = screen_w * WIDTH_RATIO
+            local window_h = screen_h * HEIGHT_RATIO
+            local window_w_int = math.floor(window_w)
+            local window_h_int = math.floor(window_h)
+            local center_x = 0.5 * (screen_w - window_w)
+            local center_y = (0.5 * (vim.opt.lines:get() - window_h)) - vim.opt.cmdheight:get()
+            return {
+              border = "rounded",
+              relative = "editor",
+              col = center_x,
+              row = center_y,
+              width = window_w_int,
+              height = window_h_int
+            }
+          end,
+        },
+        width = function()
+          return math.floor(vim.opt.columns:get() * WIDTH_RATIO)
+        end,
 			},
 			renderer = {
 				add_trailing = false,
@@ -153,7 +132,7 @@ return {
 					show = {
 						file = true,
 						folder = true,
-						folder_arrow = false,
+						folder_arrow = false, -- enable this to activate the arrows next to folders
 						git = true,
 						modified = true,
 						diagnostics = true,
@@ -186,6 +165,28 @@ return {
 					},
 				},
 			},
+			hijack_directories = {
+				enable = true,
+				auto_open = true,
+			},
+			update_focused_file = {
+				enable = true,
+				update_root = true,
+				ignore_list = {},
+				update_cwd = true,
+			},
+			system_open = {
+				cmd = "",
+				args = {},
+			},
+			git = {
+				enable = true,
+				show_on_dirs = true,
+				-- show_on_open_dirs = true,
+				disable_for_dirs = {},
+				timeout = 500,
+				cygwin_support = false,
+			},
 			diagnostics = {
 				enable = true,
 				show_on_dirs = true,
@@ -202,57 +203,20 @@ return {
 					error = "",
 				},
 			},
-			hijack_cursor = false,
-			auto_reload_on_write = true,
-			disable_netrw = false,
-			hijack_netrw = true,
-			hijack_unnamed_buffer_when_opening = false,
-			root_dirs = {},
-			prefer_startup_root = false,
-			sync_root_with_cwd = false,
-			reload_on_bufenter = false,
-			respect_buf_cwd = false,
-			select_prompts = false,
-			sort = {
-				sorter = "name",
-				folders_first = true,
-				files_first = false,
-			},
-			view = {
-				centralize_selection = false,
-				cursorline = true,
-				debounce_delay = 15,
-				side = "left",
-				preserve_window_proportions = false,
-				number = false,
-				relativenumber = false,
-				signcolumn = "yes",
-				width = 30,
-				float = {
-					enable = false,
-					quit_on_focus_loss = true,
-					open_win_config = {
-						relative = "editor",
-						border = "rounded",
-						width = 30,
-						height = 30,
-						row = 1,
-						col = 1,
-					},
-				},
-			},
-			hijack_directories = {
-				enable = true,
-				auto_open = true,
-			},
-			system_open = {
-				cmd = "",
-				args = {},
-			},
 			modified = {
 				enable = false,
 				show_on_dirs = true,
 				show_on_open_dirs = true,
+			},
+			filters = {
+				git_ignored = false,
+				dotfiles = false,
+				git_clean = false,
+				no_buffer = false,
+				no_bookmark = false,
+				-- custom = { ".git" },
+				-- custom = { ".DS_Store" },
+				exclude = {},
 			},
 			live_filter = {
 				prefix = "[FILTER]: ",
@@ -262,6 +226,44 @@ return {
 				enable = true,
 				debounce_delay = 50,
 				ignore_dirs = {},
+			},
+			actions = {
+				open_file = {
+					quit_on_open = true,
+					eject = true,
+					resize_window = true,
+					window_picker = {
+						enable = true,
+						picker = "default",
+						chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+						exclude = {
+							filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
+							buftype = { "nofile", "terminal", "help" },
+						},
+					},
+				},
+				change_dir = {
+					enable = false,
+					global = false,
+					restrict_above_cwd = false,
+				},
+				use_system_clipboard = true,
+				expand_all = {
+					max_folder_discovery = 300,
+					exclude = {},
+				},
+				file_popup = {
+					open_win_config = {
+						col = 1,
+						row = 1,
+						relative = "cursor",
+						border = "shadow",
+						style = "minimal",
+					},
+				},
+				remove_file = {
+					close_window = true,
+				},
 			},
 			trash = {
 				cmd = "gio trash",

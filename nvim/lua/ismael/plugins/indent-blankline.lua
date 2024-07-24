@@ -4,7 +4,8 @@ return {
 	version = "*",
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
-		require("ibl").setup({
+    local ibl = require("ibl") -- import indent-blankline plugin safely
+		ibl.setup({
 			-- indent_blankline_show_current_context = true,
 			indent = {
 				char = "│",

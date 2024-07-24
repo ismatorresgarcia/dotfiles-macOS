@@ -2,7 +2,8 @@
 return {
 	"tzachar/local-highlight.nvim",
 	config = function()
-		require("local-highlight").setup({
+    local lhl = require("local-highlight") -- import local-highlight plugin safely
+		lhl.setup({
 			-- file_types = {'python', 'cpp'}, -- If this is given only attach to this
 			-- OR attach to every filetype except:
 			disable_file_types = {},

@@ -3,10 +3,10 @@ return {
   -- Install the theme with lazy nvim. The colorscheme should be available when starting Neovim
   "catppuccin/nvim",
   name = "catppuccin",
-  --lazy = false, -- make sure we load this during startup if it is your main colorscheme
   priority = 1000,
   config = function()
-    require("catppuccin").setup({
+    local catppuccin = require("catppuccin") -- import catppuccin theme safely
+    catppuccin.setup({
       integrations = {
         alpha = true,
         cmp = true,
@@ -14,10 +14,9 @@ return {
         indent_blankline = {
           enabled = true,
           scope_color = "", -- catppuccin color (eg. `lavender`) Default: text
-          colored_indent_levels = false,
+          colored_indent_levels = true,
         },
-        markdown = true,
-        mason = false,
+        mason = true,
         --mini = {
         --  enabled = true,
         --  indentscope_color = "",
@@ -42,7 +41,7 @@ return {
               background = true,
           },
         },
-        nvim_surround = false,
+        nvim_surround = true,
         nvimtree = true,
         treesitter = true,
         treesitter_context = true,
@@ -50,8 +49,7 @@ return {
           enabled = true,
 
         },
-        notify = false,
-        which_key = false,
+        which_key = true,
       }
     })
   -- Activate de theme. Load the colorscheme here

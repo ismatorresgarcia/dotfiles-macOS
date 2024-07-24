@@ -7,16 +7,13 @@ return {
 		"hrsh7th/cmp-path", -- path completion and source for file system paths
 		"hrsh7th/cmp-cmdline", -- for command completions
 		"L3MON4D3/LuaSnip", -- snippet engine
-		"saadparwaiz1/cmp_luasnip", -- for snippet completions
 		"f3fora/cmp-spell", -- for spelling completion
 		"micangl/cmp-vimtex", -- for Vimtex completion
 		"petertriho/cmp-git", -- for git completion
 	},
 	config = function()
-		local cmp = require("cmp")
-
-		local luasnip = require("luasnip")
-
+		local cmp = require("cmp") -- import nvim-cmp plugin safely
+		local ls = require("luasnip") -- import LuaSnip plugin safely
 		local kind_icons = { -- los iconos para las sugerencias del autocompletado
 			article = "󰧮",
 			book = "",
@@ -57,7 +54,7 @@ return {
 			},
 			snippet = { -- configure how nvim-cmp interacts with snippet engine
 				expand = function(args)
-					luasnip.lsp_expand(args.body)
+					ls.lsp_expand(args.body)
 				end,
 			},
 			mapping = cmp.mapping.preset.insert({
@@ -71,10 +68,10 @@ return {
 				["<CR>"] = cmp.mapping.confirm({ select = false }),
 				-- supertab
 				["<Tab>"] = cmp.mapping(function(fallback)
-					if luasnip.expandable() then
-						luasnip.expand()
-					elseif luasnip.locally_jumpable(1) then
-						luasnip.jump(1)
+					if ls.expandable() then
+						ls.expand()
+					elseif ls.locally_jumpable(1) then
+						ls.jump(1)
 					elseif cmp.visible() then
 						cmp.select_next_item()
 					else
@@ -82,18 +79,18 @@ return {
 					end
 				end, { "i", "s" }),
 				-- BONEYARD
-				-- if luasnip.expand_or_locally_jumpable() then
-				--   luasnip.expand_or_jump()
-				-- elseif luasnip.locally_jumpable() then
-				--   luasnip.jump()
+				-- if ls.expand_or_locally_jumpable() then
+				--   ls.expand_or_jump()
+				-- elseif ls.locally_jumpable() then
+				--   ls.jump()
 				--   cmp.confirm()
 				-- elseif has_words_before() then
 				--  cmp.complete()
 				["<S-Tab>"] = cmp.mapping(function() -- could be function(fallback) OR function(delete-two-spaces)
 					if cmp.visible() then
 						cmp.select_prev_item()
-					elseif luasnip.locally_jumpable(-1) then
-						luasnip.jump(-1)
+					elseif ls.locally_jumpable(-1) then
+						ls.jump(-1)
 					else
 						-- fallback()
 					end

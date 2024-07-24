@@ -3,13 +3,13 @@ return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" }, -- VS-Code like icons for the nvim-tree
 	config = function()
-    local lualine = require("lualine")
-		lualine.setup({
+    local lln = require("lualine") -- import lualine plugin safely
+		lln.setup({
 			options = {
 				icons_enabled = true,
 				theme = "catppuccin",
-				component_separators = { left = "", right = "" },
-				section_separators = { left = "", right = "" },
+				component_separators = { left = "", right = "" },
+				section_separators = { left = "", right = "" },
 				disabled_filetypes = {
 					statusline = {},
 					winbar = {},

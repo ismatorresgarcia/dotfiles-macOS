@@ -6,11 +6,8 @@ return {
 		"JoosepAlviste/nvim-ts-context-commentstring", -- A Neovim plugin for setting the commentstring option based on the cursor location in the file. The location is checked via treesitter queries.
 	},
 	config = function()
-		-- import comment plugin safely
-		local comment = require("Comment")
-
-		local ts_context_commentstring = require("ts_context_commentstring.integrations.comment_nvim")
-
+		local comment = require("Comment") -- import comment plugin safely
+		local ts_context_commentstring = require("ts_context_commentstring.integrations.comment_nvim") -- for conciseness
 		-- enable comment
 		comment.setup({
 			--Add a space b/w comment and the line

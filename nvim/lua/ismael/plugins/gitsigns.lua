@@ -3,7 +3,8 @@ return {
 	"lewis6991/gitsigns.nvim",
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
-		require("gitsigns").setup({
+    local gitsgns = require("gitsigns") -- import gitsigns plugin safely
+		gitsgns.setup({
 			signs = {
 				add = { text = "┃" },
 				change = { text = "┃" },

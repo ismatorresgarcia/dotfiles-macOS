@@ -2,7 +2,8 @@
 return {
 	"micangl/cmp-vimtex",
 	config = function()
-		require("cmp_vimtex").setup({
+    local cmpvtex = require("cmp_vimtex") -- import cmp-vimtex plugin safely
+		cmpvtex.setup({
 			additional_information = {
 				info_in_menu = true,
 				info_in_window = true,
@@ -19,11 +20,12 @@ return {
 				search_engines = {
 					google_scholar = {
 						name = "Google Scholar",
-						get_url = require("cmp_vimtex").url_default_format(
+						get_url = cmpvtex.url_default_format(
 							"https://scholar.google.com/scholar?hl=en&q=%s"
 						),
 					},
-					-- Pon otros motores de busqueda si quieres
+					-- Pon otros motores de busqueda si quieres aquí debajo si quieres
+          --
 				},
 			},
 		})

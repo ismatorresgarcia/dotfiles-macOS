@@ -8,9 +8,10 @@ return {
 		"nvim-telescope/telescope-ui-select.nvim", -- it sets vim.ui.select to telescope. That means for example that Neovim core stuff can fill the telescope picker.
 	},
 	config = function()
-		local Path = require("plenary.path")
-		local config = require("session_manager.config")
-		require("session_manager").setup({
+    local ssm = require("session_manager") -- import neovim-session-manager plugin safely
+		local Path = require("plenary.path") -- for conciseness
+		local config = require("session_manager.config") -- for conciseness
+		ssm.setup({
 			-- sessions_dir = Path:new(vim.fn.stdpath('data'), 'sessions'), -- The directory where the session files will be saved.
 			sessions_dir = Path:new(vim.fn.stdpath("config"), "sessions"), -- The directory where the session files will be saved.
 			-- session_filename_to_dir =  '~/.config/nvim/sessions/', -- Function that replaces symbols into separators and colons to transform filename into a session directory.
