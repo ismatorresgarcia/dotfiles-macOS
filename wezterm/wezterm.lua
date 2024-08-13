@@ -15,11 +15,11 @@ config.color_scheme = "Catppuccin Macchiato" -- or Mocha, Frappe, Latte
 config.font_size = 19
 config.font = wezterm.font("IosevkaTerm Nerd Font Mono")
 
--- Change the window size and position
-config.initial_cols = 155
-config.initial_rows = 38
+---- Change the window size and position
+config.initial_cols = 150
+config.initial_rows = 35
 config.window_padding = {
-	left = "0.5cell",
+  left = "0.5cell",
 	right = "0.5cell",
 	top = "0.5cell",
 	bottom = "0.5cell",

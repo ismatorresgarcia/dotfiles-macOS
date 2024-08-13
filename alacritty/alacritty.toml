@@ -178,13 +178,13 @@ general = "Alacritty"
   # Application instance name
 instance = "Alacritty"
 
-[window.dimensions]
-  # Window dimensions (changes require restart)
-  #
-  # Specified in number of columns/lines, not pixels.
-  # If both are `0`, this setting is ignored.
-columns = 145
-lines = 37
+#[window.dimensions]
+#  # Window dimensions (changes require restart)
+#  #
+#  # Specified in number of columns/lines, not pixels.
+#  # If both are `0`, this setting is ignored.
+#columns = 145
+#lines = 37
 
 [window.padding]
   # Window padding (changes require restart)
@@ -194,10 +194,10 @@ lines = 37
 x = 5
 y = 5
 
-[window.position]
-  # Window position (changes require restart)
-  #
-  # Specified in number of pixels.
-  # If the position is not set, the window manager will handle the placement.
-x = 50
-y = 100
+#[window.position]
+#  # Window position (changes require restart)
+#  #
+#  # Specified in number of pixels.
+#  # If the position is not set, the window manager will handle the placement.
+#x = 50
+#y = 100
