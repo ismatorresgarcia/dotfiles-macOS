@@ -1,6 +1,6 @@
-# .config file
+# Configuration files for macOS
 
-This is my `.config` file, stored in Github as a backup for my local configuration. Be careful and **use with knowledge**, since it can potentially disrupt the configuration of your local computer. The installation requires cloning the entire repository in your home directory and creating symbolic links to different locations where the programs are supposed to be.
+This is my `.config` directory, stored in Github as a backup for my local configuration in macOS. Be careful and **use with knowledge**, since it can potentially disrupt the configuration of your local computer. The installation requires cloning the entire repository in your home directory and creating symbolic links to different locations where the programs are supposed to be.
 
 > **_NOTE:_** If requested I might prepare in the future an `install.sh` file which will do this automatically by simply executing the command in your terminal when located in the home directory.
 
