@@ -47,7 +47,7 @@ return {
         { "<leader>aet", "<cmd>e ~/.config/nvim/LuaSnip/tex/struct.lua<CR>", desc = "struct.lua" },
         ------------------------------
         { "<leader>af", "<cmd>lua vim.lsp.buf.format()<CR>", desc = "format" },
-        --- { "<leader>ah", "<cmd>lua _HTOP_TOGGLE()<CR>", , desc = "htop" },
+        -- { "<leader>ab", "<cmd>lua _BTOP_TOGGLE()<CR>", desc = "btop" },
         { "<leader>ah", "<cmd>LocalHighlightToggle<CR>", desc = "highlight" },
         { "<leader>ak", "<cmd>VimtexClean<CR>", desc = "kill aux", icon = {icon = "", color = "green" } },
         { "<leader>ap", "<cmd>TermExec cmd='python %:p:r.py'<CR>", desc = "python", icon = { icon = "", color = "yellow" } },

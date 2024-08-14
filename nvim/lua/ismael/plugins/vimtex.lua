@@ -103,5 +103,5 @@ return {
       au User VimtexEventQuit call CloseViewers()
     augroup END
     ]])
-	end,
+  end,
 }
