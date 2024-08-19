@@ -19,10 +19,10 @@ config.font = wezterm.font("IosevkaTerm Nerd Font Mono")
 config.initial_cols = 150
 config.initial_rows = 35
 config.window_padding = {
-  left = "0.5cell",
-	right = "0.5cell",
-	top = "0.5cell",
-	bottom = "0.5cell",
+  left = "0.7cell",
+	right = "0.7cell",
+	top = "0.3cell",
+	bottom = "0.3cell",
 }
 
 -- Eliminate the window bar
