@@ -1,0 +1,5 @@
+# Set the theme to "Catppuccin Macchiato"
+--theme="Catppuccin Macchiato"
+
+# Use italic text on the terminal (not supported on all terminals)
+--italic-text=always
