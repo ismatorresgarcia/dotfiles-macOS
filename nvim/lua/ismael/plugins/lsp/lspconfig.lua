@@ -1,24 +1,20 @@
 -- LSP
--- configuring lsp servers
+-- configuration of the language server protocols known as 'lsp'
 return {
-  "neovim/nvim-lspconfig", -- easily configure language servers
+  "neovim/nvim-lspconfig", -- easily configure language servers in neovim
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
-    { "hrsh7th/cmp-nvim-lsp" }, -- for autocompletion
-    { "antosha417/nvim-lsp-file-operations", config = true }, -- for file operations using lsp support
+    "hrsh7th/cmp-nvim-lsp", -- for autocompletion
+    { "antosha417/nvim-lsp-file-operations", config = true } -- for file operations using lsp support
   },
   config = function()
-    -- import lspconfig plugin
-    local lspconfig = require("lspconfig")
+    local lspconfig = require("lspconfig") -- import lspconfig plugin safely
+    local cmp_nvim_lsp = require("cmp_nvim_lsp") -- import cmp-nvim-lsp plugin safely
 
-    -- import cmp-nvim-lsp plugin
-    local cmp_nvim_lsp = require("cmp_nvim_lsp")
+    -- declare local variables for conciseness
+    local default = cmp_nvim_lsp.default_capabilities() -- Variable used to enable autocompletion (assign to every lsp server config)
+    local signs = { Error = "", Warn = "", Hint = "󰠠", Info = "" } -- Change the diagnostic symbols in the sign column (gutter)
 
-    -- used to enable autocompletion (assign to every lsp server config)
-    local default = cmp_nvim_lsp.default_capabilities()
-
-    -- Change the Diagnostic symbols in the sign column (gutter)
-    local signs = { Error = "", Warn = "", Hint = "󰠠", Info = "" }
     for type, icon in pairs(signs) do
       local hl = "DiagnosticSign" .. type
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
@@ -40,11 +36,18 @@ return {
     --   filetypes = { "html", "typescriptreact", "javascriptreact" }, -- , "css", "sass", "scss", "less", "svelte"
     -- })
 
+    -- configure C and C++ server
+    lspconfig["clangd"].setup({
+      capabilities = default,
+    })
+    -- configure fortran server
+    lspconfig["fortls"].setup({
+      capabilities = default,
+    })
     -- configure python server
     lspconfig["pyright"].setup({
       capabilities = default,
     })
-
     -- configure lua server (with special settings)
     lspconfig["lua_ls"].setup({
       capabilities = default,

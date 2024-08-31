@@ -1,11 +1,11 @@
 -- LSP
--- setup formatters & linters
+-- setup formatters & linters 
 return {
 	"nvimtools/none-ls.nvim", -- configure formatters & linters
 	lazy = true,
-	ft = { "py", "html", "js", "ts", "lua" },
+	ft = { "c", "cpp", "f90", "py", "html", "js", "ts", "lua" },
 	event = { "BufReadPre", "BufNewFile" },
-	dependencies = {
+dependencies = {
 		"williamboman/mason.nvim", -- in charge of managing lsp servers, linters & formatters
 		"jay-babu/mason-null-ls.nvim", -- bridges gap b/w mason & null-ls
 	},
@@ -13,23 +13,24 @@ return {
 		local mason_null_ls = require("mason-null-ls")
 		mason_null_ls.setup({
 			-- "prettier", -- ts/js formatter
-			"stylua", -- lua formatter
+      "clang-format", -- C/C++ formatter
+      "fprettify", -- modern fortran formatter
 			"isort", -- python formatter
 			"black", -- python formatter
 			"pylint", -- python linter
+			"stylua", -- lua formatter
 			-- "eslint_d", -- js linter
 		})
 
 		-- declare local variables for conciseness
-		local null_ls = require("null-ls")
-		local null_ls_utils = require("null-ls.utils")
+		local null_ls = require("null-ls") -- import null-ls plugin safely
+		local null_ls_utils = require("null-ls.utils") -- for conciseness
 		local formatting = null_ls.builtins.formatting -- to setup formatters
 		local diagnostics = null_ls.builtins.diagnostics -- to setup linters
 
 		-- to setup format on save
 		-- local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
-		-- configure null_ls
 		null_ls.setup({
 			-- add package.json as identifier for root (for typescript monorepos)
 			root_dir = null_ls_utils.root_pattern(".null-ls-root", "Makefile", ".git", "package.json"),
@@ -41,10 +42,14 @@ return {
 				--   extra_filetypes = { "svelte" },
 				--   disabled_filetypes = { "txt" },
 				-- }),                -- js/ts formatter
-				formatting.stylua, -- lua formatter
+        formatting.clang_format.with({
+          extra_args = { "--style=file", vim.fn.expand("~/Documents/Proyectos/C++/clang_format") },
+        }),
+        formatting.fprettify, -- modern fortran formatter
 				formatting.isort, -- python formatter
 				formatting.black, -- python formatter
-				diagnostics.pylint, --python formatter
+				diagnostics.pylint, --python linter
+				formatting.stylua, -- lua formatter
 				-- .with({
 				--   extra_args = { "--config-path", vim.fn.expand("~/.nix-profile/bit/z3") },
 				-- }),

@@ -14,7 +14,7 @@ return {
         indent_blankline = {
           enabled = true,
           scope_color = "", -- catppuccin color (eg. `lavender`) Default: text
-          colored_indent_levels = true,
+          colored_indent_levels = false,
         },
         mason = true,
         --mini = {
@@ -41,13 +41,12 @@ return {
               background = true,
           },
         },
-        nvim_surround = true,
+        nvim_surround = false,
         nvimtree = true,
         treesitter = true,
         treesitter_context = true,
         telescope = {
           enabled = true,
-
         },
         which_key = true,
       }
