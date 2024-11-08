@@ -12,7 +12,7 @@ return {
 			-- enable syntax highlighting
 			highlight = {
 				enable = true,
-				disable = { "css", "latex", "markdown", "cls" }, -- list of language that will be disabled
+				disable = { "latex" }, -- list of language that will be disabled
 				-- additional_vim_regex_highlighting = { 'org' }, -- for orgmode
 			},
 			-- enable indentation
@@ -24,35 +24,19 @@ return {
 			-- ensure these language parsers are installed
 			ensure_installed = {
 				"json",
-				"yaml",
 				"html",
 				"bash",
 				"lua",
 				"vim",
 				"gitignore",
-				"query",
 				"vim",
 				"c",
         "cpp",
         "fortran",
 				"python",
-				"haskell",
 				"gitignore",
 				"bibtex",
 				"vimdoc",
-				"norg",
-				-- "latex",
-				-- "javascript",
-				-- "typescript",
-				-- "tsx",
-				-- "css",
-				-- "prisma",
-				-- "markdown",
-				-- "markdown_inline",
-				-- "svelte",
-				-- "graphql",
-				-- "dockerfile",
-				-- "perl",
 			},
 			auto_install = true,
 			ignore_install = { "latex" }, -- List of parsers to ignore installing

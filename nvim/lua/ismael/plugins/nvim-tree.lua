@@ -237,7 +237,7 @@ return {
 						picker = "default",
 						chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
 						exclude = {
-							filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
+							filetype = { "packer", "notify", "qf", "diff", "fugitive", "fugitiveblame" },
 							buftype = { "nofile", "terminal", "help" },
 						},
 					},

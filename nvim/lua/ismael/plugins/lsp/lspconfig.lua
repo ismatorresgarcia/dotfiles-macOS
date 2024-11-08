@@ -25,17 +25,6 @@ return {
     --   capabilities = default,
     -- })
 
-    -- -- configure typescript server with plugin
-    -- lspconfig["tsserver"].setup({
-    --   capabilities = default,
-    -- })
-
-    -- -- configure emmet language server
-    -- lspconfig["emmet_ls"].setup({
-    --   capabilities = default,
-    --   filetypes = { "html", "typescriptreact", "javascriptreact" }, -- , "css", "sass", "scss", "less", "svelte"
-    -- })
-
     -- configure C and C++ server
     lspconfig["clangd"].setup({
       capabilities = default,

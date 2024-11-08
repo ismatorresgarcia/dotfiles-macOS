@@ -62,6 +62,12 @@ opt.backup = false -- Creates a backup file
 opt.writebackup = false -- If a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 
 -----------------------------------------------------------
+-- Python 
+-----------------------------------------------------------
+--g.python3_host_prog = "/Users/ytoga/.virtualenvs/neovim/bin/python" (also valid if u don't need to change between python versions)
+g.python3_host_prog = "/Users/ytoga/.pyenv/versions/3.12.6/bin/python"
+
+-----------------------------------------------------------
 -- LaTeX global options (ver vimtex.lua)
 -----------------------------------------------------------
 g.tex_flavor = "latex"

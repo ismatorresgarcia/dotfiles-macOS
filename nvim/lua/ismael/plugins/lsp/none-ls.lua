@@ -1,11 +1,11 @@
 -- LSP
--- setup formatters & linters 
+-- setup formatters & linters
 return {
 	"nvimtools/none-ls.nvim", -- configure formatters & linters
 	lazy = true,
-	ft = { "c", "cpp", "f90", "py", "html", "js", "ts", "lua" },
+	ft = { "c", "cpp", "f90", "py", "html", "lua" },
 	event = { "BufReadPre", "BufNewFile" },
-dependencies = {
+	dependencies = {
 		"williamboman/mason.nvim", -- in charge of managing lsp servers, linters & formatters
 		"jay-babu/mason-null-ls.nvim", -- bridges gap b/w mason & null-ls
 	},
@@ -13,13 +13,13 @@ dependencies = {
 		local mason_null_ls = require("mason-null-ls")
 		mason_null_ls.setup({
 			-- "prettier", -- ts/js formatter
-      "clang-format", -- C/C++ formatter
-      "fprettify", -- modern fortran formatter
+			"clang-format", -- C/C++ formatter
+			"fprettify", -- modern fortran formatter
 			"isort", -- python formatter
 			"black", -- python formatter
-			"pylint", -- python linter
+      --"yapf", -- python formatter
+			--"pylint", -- python linter
 			"stylua", -- lua formatter
-			-- "eslint_d", -- js linter
 		})
 
 		-- declare local variables for conciseness
@@ -42,14 +42,18 @@ dependencies = {
 				--   extra_filetypes = { "svelte" },
 				--   disabled_filetypes = { "txt" },
 				-- }),                -- js/ts formatter
-        formatting.clang_format.with({
-          extra_args = { "--style=file", vim.fn.expand("~/Documents/Proyectos/C++/clang_format") },
-        }),
-        formatting.fprettify, -- modern fortran formatter
+				formatting.clang_format.with({ -- C/C++ formatter
+					extra_args = { "--style=file", vim.fn.expand("~/Documents/Proyectos/C++/clang_format") },
+				}),
+				formatting.fprettify, -- modern fortran formatter
 				formatting.isort, -- python formatter
-				formatting.black, -- python formatter
-				diagnostics.pylint, --python linter
-				formatting.stylua, -- lua formatter
+        formatting.black, -- python formatter
+				--formatting.yapf, -- python formatter
+        diagnostics.pylint,
+				--diagnostics.pylint.with({ --python linter
+        --  prefer_local = "~/.virtualenvs/neovim/bin/"
+        --}),
+        formatting.stylua, -- lua formatter
 				-- .with({
 				--   extra_args = { "--config-path", vim.fn.expand("~/.nix-profile/bit/z3") },
 				-- }),
