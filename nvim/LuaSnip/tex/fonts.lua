@@ -26,7 +26,7 @@ end
 return {
 	-- TYPEWRITER (i.e. \texttt)
 	s(
-		{ trig = "([^%a])tt", regTrig = true, wordTrig = false, snippetType = "autosnippet", priority = 2000 },
+		{ trig = "([^%a])ttt", regTrig = true, wordTrig = false, snippetType = "autosnippet", priority = 2000 },
 		fmta("<>\\texttt{<>}", {
 			f(function(_, snip)
 				return snip.captures[1]
@@ -48,7 +48,7 @@ return {
 	),
 	-- CURSIVA (i.e. \emph, utilizo emph que es más dinámico)
 	s(
-		{ trig = "([^%a])tii", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+		{ trig = "([^%a])tit", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
 		fmta("<>\\emph{<>}", {
 			f(function(_, snip)
 				return snip.captures[1]
@@ -59,7 +59,7 @@ return {
 	),
 	-- NÚMEROS ROMANOS (i.e. \RN con 'biblatex')
 	s(
-		{ trig = "nrr", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+		{ trig = "rnn", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
 		fmta("<>\\RN{<>}", {
 			f(function(_, snip)
 				return snip.captures[1]
@@ -70,7 +70,7 @@ return {
 	),
 	-- MATES RECTAS i.e. \mathrm
 	s(
-		{ trig = "([^%a])rmm", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+		{ trig = "([^%a])mrm", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
 		fmta("<>\\mathrm{<>}", {
 			f(function(_, snip)
 				return snip.captures[1]
@@ -80,7 +80,7 @@ return {
 	),
 	-- MATES CALIGRÁFICAS i.e. \mathcal
 	s(
-		{ trig = "([^%a])mcc", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+		{ trig = "([^%a])mcl", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
 		fmta("<>\\mathcal{<>}", {
 			f(function(_, snip)
 				return snip.captures[1]
@@ -90,7 +90,7 @@ return {
 	),
 	-- MATES GÓTICAS i.e. \mathfrak
 	s(
-		{ trig = "([^%a])mkk", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+		{ trig = "([^%a])mfk", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
 		fmta("<>\\mathfrak{<>}", {
 			f(function(_, snip)
 				return snip.captures[1]
@@ -110,7 +110,7 @@ return {
 	),
 	-- MATES DE PIZARRA i.e. \mathbb
 	s(
-		{ trig = "([^%a])mbb", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+		{ trig = "([^%a])mpi", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
 		fmta("<>\\mathbb{<>}", {
 			f(function(_, snip)
 				return snip.captures[1]
@@ -130,7 +130,7 @@ return {
 	),
 	-- MATES EN SANS SERIF Y NEGRITA (un solo símbolo) i.e. \symbfsfup
 	s(
-		{ trig = "([^%a])sbs", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+		{ trig = "([^%a])sff", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
 		fmta("<>\\symbfsf{<>}", {
 			f(function(_, snip)
 				return snip.captures[1]
@@ -140,7 +140,7 @@ return {
 	),
 	-- MATES RECTAS (un solo símbolo) i.e. \symrm
 	s(
-		{ trig = "([^%a])rsm", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+		{ trig = "([^%a])srm", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
 		fmta("<>\\symrm{<>}", {
 			f(function(_, snip)
 				return snip.captures[1]
@@ -150,7 +150,7 @@ return {
 	),
 	-- MATES CALIGRÁFICAS (un solo símbolo) i.e. \symcal
 	s(
-		{ trig = "([^%a])scc", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+		{ trig = "([^%a])scl", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
 		fmta("<>\\symcal{<>}", {
 			f(function(_, snip)
 				return snip.captures[1]
@@ -160,7 +160,7 @@ return {
 	),
 	-- MATES GÓTICAS (un solo símbolo) i.e. \symfrak
 	s(
-		{ trig = "([^%a])skk", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+		{ trig = "([^%a])sfk", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
 		fmta("<>\\symfrak{<>}", {
 			f(function(_, snip)
 				return snip.captures[1]
@@ -200,7 +200,7 @@ return {
 	),
 	-- TEXTO PLANO i.e. \text (dentro de un entorno matemático)
 	s(
-		{ trig = "([^%a])tee", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+		{ trig = "([^%a])txt", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
 		fmta("<>\\text{<>}", {
 			f(function(_, snip)
 				return snip.captures[1]

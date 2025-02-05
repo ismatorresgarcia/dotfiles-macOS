@@ -29,10 +29,10 @@ return {
 	),
 	-- CITAR ENTRADA BIBLIOGRÁFICA
 	s(
-		{ trig = "XC", snippetType = "autosnippet", wordTrig = false },
+		{ trig = "cbi", snippetType = "autosnippet", wordTrig = false },
 		fmta(
 			[[
-        \autocite{<>}
+        \cite{<>}
       ]],
 			{
 				d(1, get_visual),
@@ -41,7 +41,7 @@ return {
 	),
 	-- MENCIONAR ETIQUETAS DE FIGURAS, TABLAS Y CÓDIGOS
 	s(
-		{ trig = "XR", snippetType = "autosnippet", wordTrig = false },
+		{ trig = "cfl", snippetType = "autosnippet", wordTrig = false },
 		fmta(
 			[[
         \ref{<>}
@@ -53,7 +53,7 @@ return {
 	),
 	-- MENCIONAR SECCIONES (utilizo el símbolo \S)
 	s(
-		{ trig = "XM", snippetType = "autosnippet", wordTrig = false },
+		{ trig = "ccr", snippetType = "autosnippet", wordTrig = false },
 		fmta(
 			[[
         \S\ref{<>}
@@ -65,7 +65,7 @@ return {
 	),
 	-- MENCIONAR ECUACIONES (con eqref de la ams)
 	s(
-		{ trig = "XE", snippetType = "autosnippet", wordTrig = false },
+		{ trig = "eqr", snippetType = "autosnippet", wordTrig = false },
 		fmta(
 			[[
         \eqref{eq:<>}

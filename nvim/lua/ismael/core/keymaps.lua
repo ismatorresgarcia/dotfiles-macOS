@@ -40,8 +40,8 @@ keymap("n", "<CR>", "<cmd>noh<CR>", opts)
 vim.keymap.set("n", "<C-p>", "<cmd>Telescope find_files<CR>", { remap = true })
 
 -- Activar comentarios
-keymap('n', '<C-Bslash>', '<Plug>(comment_toggle_linewise_current)', opts)
-keymap('x', '<C-Bslash>', '<Plug>(comment_toggle_linewise_visual)', opts)
+keymap("n", "<C-Bslash>", "<Plug>(comment_toggle_linewise_current)", opts)
+keymap("x", "<C-Bslash>", "<Plug>(comment_toggle_linewise_visual)", opts)
 
 -- Abrir la ventana de ayuda sobre una palabra
 keymap("n", "<S-m>", ':execute "help " . expand("<cword>")<cr>', opts)
@@ -51,9 +51,9 @@ keymap("n", "Y", "y$", opts)
 keymap("n", "E", "ge", opts)
 keymap("v", "Y", "y$", opts)
 
--- Centrar el cursor
-keymap("n", "m", "zt", opts)
-keymap("v", "m", "zt", opts)
+-- Centrar el cursor en la pantalla
+keymap("n", "m", "zz", opts)
+keymap("v", "m", "zz", opts)
 
 -- Moverse entra las ventanas y opciones
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -82,8 +82,8 @@ keymap("v", "<A-j>", ":m'>+<CR>gv", opts)
 keymap("v", "<A-k>", ":m-2<CR>gv", opts)
 
 -- Movimiento en vertical en una línea (cuando la "línea" del código ocupa muchas líneas del display)
-keymap("n", "<c-u>", "<c-u>zz", opts)
 keymap("n", "<c-d>", "<c-d>zz", opts)
+keymap("n", "<c-u>", "<c-u>zz", opts)
 
 -- Movimiento en horizontal en una línea (cuando la "línea" del código ocupa muchas líneas del display)
 keymap("v", "<S-h>", "g^", opts)
@@ -102,10 +102,3 @@ keymap("n", "J", "gj", opts)
 keymap("n", "K", "gk", opts)
 keymap("v", "J", "gj", opts)
 keymap("v", "K", "gk", opts)
-
-
-
-
-
-
-

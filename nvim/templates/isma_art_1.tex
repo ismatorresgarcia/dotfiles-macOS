@@ -1,0 +1,229 @@
+% !TeX program = lualatex
+%% La primera línea es un mapping entre la directiva TeX y el motor de compilación que utiliza VimTeX
+%%% clase de base (KOMA-Script)
+\documentclass{scrartcl} %% clase artículo KOMA-Script para el documento base
+\KOMAoptions{     
+  paper = a4,                         %% tamaño del papel
+  DIV = 12,                           %% geometría
+  BCOR = 0mm,                        %% geometría
+  fontsize = 11pt,                    %% tamaño de la fuente
+  twoside = false,                    %% no recto-verso
+  headings = normal,                  %% tamaño de letra para los títulos: small, normal, big
+  parskip = half,                     %% sangría y espaciado de párrafos
+  %headsepline = true,                  %% una linea separa la cabecera del texto
+  %listof = totoc,                      %% añadir a los contenidos la lista de tablas y figuras
+  %bibliography = toc,                  %% añadir a los contenidos una entrada para la bibliografia
+  %draft                              %% para versiones de revisión, muestra las líneas mal formateadas
+}
+%%% paquetes básicos
+%% fórmulas, símbolos y teoremas matemáticos. 'unicode-math' sobrescribirá las definiciones necesarias después
+\usepackage{amsmath}              %% fórmulas y entornos matemáticos. Cargar antes de 'unicode-math' por recomendación de este  
+\usepackage{amssymb}              %% fuentes y símbolos matemáticos (carga 'amsfonts' también)
+
+\usepackage{unicode-math}         %% gestión de matemáticas. Los paquetes de la AMS son incompatibles, así que ponlos antes para que sobrescriba lo que considere necesario. También carga 'fontspec' para gestionar las fuentes de texto con XeLaTeX o LuaLaTeX
+\unimathsetup{                        %% las opciones del paquete 'unicode-math'
+  math-style = TeX, 
+  bold-style = TeX,
+}
+\setmainfont{minionpro-regular}[       %% Fuente comercial Minion Pro de Adobe (desarrollador Robert Slimbach) para el texto en Serif
+  Extension      = .otf,
+  Path = /Users/ytoga/Documents/fuentes-texto/minion-pro/OTF-Fonts/,
+  BoldFont       = minionpro-bold,
+  ItalicFont     = minionpro-it,
+  BoldItalicFont = minionpro-boldit
+]
+\setmathfont{MinionMath-Regular}[      %% Fuente comercial Minion Math de Johannes Küsner para la matemática
+  Extension = .otf,
+  Path = /Users/ytoga/Documents/fuentes-texto/minion-math/fonts-MinionMath/,
+  Scale = 1,
+  Script = Math,
+  SizeFeatures = {
+    {Size = -6, Font = MinionMath-Tiny,
+    Style = MathScriptScript},
+    {Size = 6-8.4, Font = MinionMath-Capt,
+    Style = MathScript},
+    {Size = 8.4-, Font = MinionMath-Regular}
+  }
+]
+\setmathfont{MinionMath-Bold}[        %% Fuente comercial Minion Math de Johannes Küsner para la matemática
+  Extension = .otf,
+  Path = /Users/ytoga/Documents/fuentes-texto/minion-math/fonts-MinionMath/,
+  version = bold
+]
+\setmathfont{XITSMath-Regular}[       %% Fuente XITSMath para la matemática (Minion Math no tiene símbolos para gótica ni caligráfica)
+  Extension = .otf,
+  Path = /Users/ytoga/Documents/fuentes-texto/xits/,
+  BoldFont = XITSMath-Bold,
+  range = {\symcal,\symfrak,\symbfcal,\symbffrak},
+]
+
+%%% microtipografía de las fuentes con 'microtype'. Con LuaLaTeX tiene más funcionalidades (expansión y protrusión) que XeLaTeX (solo protrusión)
+\usepackage{microtype}            %% microtipografía (detalles finos entre palabras, en los márgenes, etc.)
+
+%%% gestión de los idiomas. Las opciones de 'polyglossia' las cargo más adelante por recomendación del manual
+\usepackage{polyglossia}
+\setdefaultlanguage[ %%% configuración de los idiomas con 'polyglossia'
+  variant = spanish,
+  spanishoperators = all,
+]{spanish}
+\setotherlanguage[variant=british]{english}
+\usepackage[autostyle]{csquotes}        %% entorno para comillas tipográficas (y más cosas) 
+
+%%% matemáticas, física y química
+\usepackage{siunitx}                    %% unidades del sistema internacional
+\sisetup{                                   %% opciones de las unidades del paquete
+  output-decimal-marker = {,},
+  exponent-product = \times,
+  range-phrase = \textup{--},
+  range-exponents = combine-bracket,
+  range-units = repeat,
+  uncertainty-mode = separate,
+  list-pair-separator = { | },
+  per-mode = symbol
+}
+
+%%% tablas y figuras
+\usepackage{graphicx}             %% imágenes y figuras
+\graphicspath{{Figuras/}}             %% ruta de las figuras
+\usepackage{booktabs}             %% tablas profesionales
+
+\usepackage{lipsum} %% párrafos de relleno
+
+%%% configuración de las páginas en KOMA-Script
+\usepackage[
+    automark,                              
+    autooneside=false                       
+]{scrlayer-scrpage}  
+\pagestyle{scrheadings}
+
+%%% colores del documento
+\usepackage{xcolor}
+\definecolor{miazul}{RGB}{0,30,155}
+\definecolor{mirojo}{RGB}{153,0,0}
+\definecolor{mirojoo}{RGB}{200,100,80}
+\definecolor{miverde}{RGB}{0,153,0}
+\definecolor{mimorado}{RGB}{140,45,165}
+\definecolor{minaranja}{RGB}{250,150,5}
+
+%%% PDF
+\usepackage{bookmark}                   %% gestión moderna de los marcadores del paquete 'hyperref'
+\usepackage{hyperref}                   %% pdf con hipervínculos, referencias cruzadas, etc.
+\hypersetup{
+  %backref=true,                          %% añadir hipervínculos (por defecto)
+  %pagebackref=true,                      %% en la bibliografía (por defecto)
+  %hyperindex=true,                       %% en el índice (por defecto)
+  %bookmarks=true,                        %% marcadores de Acrobat (por defecto)
+  breaklinks = true,                        %% romper línea si es demasiado largo el hipervínculo
+  colorlinks = true,                        %% color de hipervínculos
+  urlcolor = minaranja,                     %% color de hipervínculos de direcciones web
+  citecolor = miverde,                      %% color de citas bibliográficas internas
+  linkcolor = miazul,                       %% color de vínculos internos
+  filecolor = mirojo,                       %% color de urls que abren archivos
+  menucolor = mirojoo,                      %% color de las pestañas en Adobe
+  anchorcolor = black,                      %% color del texto anclado cuando pasas por encima
+  bookmarksopen = false,                    %% las pestañas de los marcadores del pdf aparecen todas desplegadas
+  %linktocpage=false,                     %% hipervínculos en el número de página en lugar del texto del TOC
+%% metacampos del pdf :                     %% ATENCIÓN: hay que completarlos 
+  pdftitle    = {Modelo Reducido},
+  pdfauthor   = {Ismael Torres García},
+  pdfsubject  = {Filamentación},
+  %pdfkeywords = {SXRL, Kriptón, XUV, HOH, HHG, Dagon},
+}
+
+%%% configuración de la bibliografía con 'biblatex'. Biblatex carga 'etoolbox' entre otros paquetes
+\usepackage[                            %% gestion de la bibliografía con biblatex
+  backend = biber,                          %% compilador por defecto con biblatex (recomendado)
+  natbib = true,                            %% comandos del paquete natbib (autocite, por ejemplo)
+  maxnames = 20,                            %% número max. de nombres de autores
+  minnames = 1,                             %% número min. de nombres de autores
+  sorting = nyt,                            %% ordenar por nombre, título y año 
+  autocite = superscript,                   %% estilos de las citas del texto como superíndices
+  citestyle = numeric-comp,                 %% estilo de las citas numérico tipo [1-3] (pon numeric-comp, en draft mientras edito)
+  bibstyle = numeric,                       %% estilo de bibliografía numérica (pon numeric, en draft mientras edito)  
+  backref = false                           %% sacar las páginas de las citas en la bibliografía (cf. p.)
+]{biblatex}                   
+\addbibresource{Zotero.bib}                 %% archivo bibliográfico que estoy utilizando
+
+%%% comandos para configurar tamaños y fuentes de los distintos niveles
+\addtokomafont{disposition}{\normalfont\bfseries}
+
+%\setkomafont{chapter}{\sffamily\fontsize{25pt}{30pt}\selectfont\color{miazul}}
+%\setkomafont{chapterprefix}{\sffamily\fontsize{11pt}{13pt}\selectfont\color{miazul}}
+%\newkomafont{chapternumber}{\fontsize{50pt}{60pt}\selectfont\color{miazul}}
+%
+%\addtokomafont{section}{\sffamily\fontsize{17pt}{21pt}\selectfont\color{miazul}}
+%\addtokomafont{subsection}{\sffamily\fontsize{14pt}{17pt}\selectfont\color{miazul}}
+%\addtokomafont{subsubsection}{\sffamily\fontsize{11pt}{13pt}\selectfont\color{miazul}}
+%\addtokomafont{paragraph}{\normalfont\sffamily\itshape\fontsize{12pt}{14pt}\selectfont\color{miazul}}
+%\addtokomafont{subparagraph}{\normalfont\sffamily\itshape\fontsize{12pt}{14pt}\selectfont\color{miazul}}
+
+%%% Definición de comandos útiles para escribir con los snippets
+%% vectores de la base
+\newcommand*{\unitvector}{\symbf{e}}
+\newcommand*{\uvec}{\hat{e}}
+%% derivadas totales
+\newcommand*{\dvOne}[1]{\frac{\operatorname{d}}{\operatorname{d}\!#1}}
+\newcommand*{\dv}[2]{\frac{\operatorname{d}\!#1}{\operatorname{d}\!#2}}
+\newcommand*{\dvN}[3]{\frac{\operatorname{d^{#3}}\!#1}{\operatorname{d}\!{#2}^{#3}}}
+%% derivadas parciales
+\newcommand*{\pdvOne}[1]{\frac{\partial}{\partial#1}#1}
+\newcommand*{\pdv}[2]{\frac{\partial#1}{\partial#2}}
+\newcommand*{\pdvN}[3]{\frac{\partial^{#3}#1}{\partial{#2}^{#3}}}
+%% diferenciales de primer orden
+\newcommand*{\diff}{\operatorname{d}\!}
+\newcommand*{\pdiff}{\partial}
+%% nombres de conceptos
+\newcommand*{\RE}{\operatorname{Re}}
+\newcommand*{\IM}{\operatorname{Im}}
+%% conjuntos de números
+\newcommand*{\iu}{\symrm{i}}
+\newcommand*{\eu}{\symrm{e}}
+%% operadores matemáticos
+\newcommand*{\grad}{\nabla}
+\newcommand*{\curl}{{\nabla}\times}
+\newcommand*{\diver}{\nabla\cdot}
+\newcommand*{\laplacian}{\nabla^{2}}
+%% combinatoria, probabilidad y estadística
+\newcommand*{\bnn}[2]{\binom{#1}{#2}}
+%% delimitadores importantes
+\newcommand*{\abs}[1]{\left|#1\right|}
+\newcommand*{\bra}[1]{\langle#1|}
+\newcommand*{\ket}[1]{|#1\rangle}
+\newcommand*{\xval}[1]{\langle#1\rangle}
+\newcommand*{\Xval}[3]{\left\langle#1\middle|#2\middle|#3\right\rangle}
+\newcommand*{\braket}[2]{\left\langle#1\middle|#2\right\rangle}
+
+%%% primera página
+%\titlehead{}         
+\subject{Tema}
+\title{Título}
+\author{Ismael Torres García}
+
+\begin{document}
+\maketitle
+
+%%% resumen
+\begin{abstract}
+  \lipsum[1]
+\end{abstract}
+
+%%% índice general
+\tableofcontents
+
+%%% secciones
+\section{Sección uno}
+\lipsum[1-2]
+
+\subsection{Subsección uno}
+\lipsum[1-2]
+
+\section{Sección dos}
+\lipsum[1-2]
+
+\subsection{Subsección dos}
+\lipsum[1-2]
+
+%%% bibliografía
+\printbibliography
+
+\end{document}

@@ -102,7 +102,7 @@ return {
 		}),
 		{ condition = tex.in_mathzone }
 	),
-	-- SUBÍNDICE j RÁPIDO (jk está reservado para saltar hacia delante los snippets)
+	-- SUBÍNDICE j RÁPIDO (jk está reservado para saltar hacia delante en los snippets)
 	s(
 		{ trig = "([%a%)%]%}])JJ", wordTrig = false, regTrig = true, snippetType = "autosnippet" },
 		fmta("<>_{<>}", {
@@ -426,7 +426,7 @@ return {
 	-- INTEGRAL de menos a más infinito (todo R)
 	s(
 		{ trig = "([^%a])intf", wordTrig = false, regTrig = true, snippetType = "autosnippet" },
-		fmta("<>\\int_{\\infty}^{\\infty}", {
+		fmta("<>\\int_{-\\infty}^{\\infty}", {
 			f(function(_, snip)
 				return snip.captures[1]
 			end),
@@ -474,11 +474,11 @@ return {
 		t("\\curl "),
 	}, { condition = tex.in_mathzone }),
 	-- OPERADOR DIVERGENCIA, i.e. \divergence
-	s({ trig = "DI", snippetType = "autosnippet" }, {
+	s({ trig = "div", snippetType = "autosnippet" }, {
 		t("\\diver "),
 	}, { condition = tex.in_mathzone }),
 	-- OPERADOR LAPLACIANO, i.e. \laplacian
-	s({ trig = "laa", snippetType = "autosnippet" }, {
+	s({ trig = "lap", snippetType = "autosnippet" }, {
 		t("\\laplacian "),
 	}, { condition = tex.in_mathzone }),
 	-- D'ALAMBERTIANO, i.e. \dalambert
@@ -495,7 +495,7 @@ return {
 	}, { condition = tex.in_mathzone }),
 	-- SÍMBOLO DE PERPENDICULARIDAD, i.e. \perp
 	s({ trig = "prp", snippetType = "autosnippet" }, {
-		t("\\perp "),
+		t("\\perp"),
 	}, { condition = tex.in_mathzone }),
 	-- PUNTOS SUSPENSIVOS CENTRADOS, i.e. \cdots
 	s({ trig = "cdd", snippetType = "autosnippet" }, {
@@ -512,6 +512,10 @@ return {
 	-- SÍMBOLO DEL IGUAL CON PUNTO ENCIMA
 	s({ trig = "dqq", snippetType = "autosnippet" }, {
 		t("\\doteq "),
+	}, { condition = tex.in_mathzone }),
+	-- SÍMBOLO DEL PERTENENCIA, i.e. \in
+	s({ trig = "per", snippetType = "autosnippet" }, {
+		t("\\in "),
 	}, { condition = tex.in_mathzone }),
 	-- SÍMBOLO DEL MENOS ENTRE CONJUNTOS, i.e. \setminus
 	s({ trig = "stm", snippetType = "autosnippet" }, {
@@ -534,7 +538,7 @@ return {
 		t("\\pm "),
 	}, { condition = tex.in_mathzone }),
 	-- PROPORCIONAL, i.e. \propto
-	s({ trig = "pt", snippetType = "autosnippet" }, {
+	s({ trig = "ppl", snippetType = "autosnippet" }, {
 		t("\\propto "),
 	}, { condition = tex.in_mathzone }),
 	-- DOS PUNTOS SEPARADORES, i.e. \colon

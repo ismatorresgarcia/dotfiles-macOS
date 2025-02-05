@@ -55,8 +55,6 @@ return {
 
     require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/LuaSnip/"})
 
-    vim.keymap.set("", "<S-R>", '<Cmd>lua require("luasnip.loaders.from_lua").lazy_load({paths = "~/.config/nvim/LuaSnip/"})<CR><Cmd>echo "Snippets refreshed!"<CR>')
+    vim.keymap.set("n", "<A-ñ>", '<Cmd>lua require("luasnip.loaders.from_lua").lazy_load({paths = "~/.config/nvim/LuaSnip/"})<CR><Cmd>echo "Snippets refreshed!"<CR>')
 	end,
 }
-
-

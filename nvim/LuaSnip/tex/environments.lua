@@ -102,7 +102,7 @@ return {
 	),
 	-- ALINEAR ECUACIONES SIN NUMERAR
 	s(
-		{ trig = "all", snippetType = "autosnippet" },
+		{ trig = "alg", snippetType = "autosnippet" },
 		fmta(
 			[[
         \begin{align*}

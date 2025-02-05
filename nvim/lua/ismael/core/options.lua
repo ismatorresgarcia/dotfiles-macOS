@@ -1,16 +1,16 @@
 -----------------------------------------------------------
--- Configuración general y opciones de NeoVim
+--- Configuración general y opciones de NeoVim
 -----------------------------------------------------------
 
--- Las opciones por defecto he intentado no incluirlas
--- Ver: https://neovim.io/doc/user/vim_diff.html
--- [2] Predeterminadas - *nvim-defaults*
+--- Las opciones por defecto he intentado no incluirlas
+--- Ver: https://neovim.io/doc/user/vim_diff.html
+--- [2] Predeterminadas - *nvim-defaults*
 
 local g = vim.g -- Variables globales
 local opt = vim.opt -- Opciones (global/buffer/windows-scoped)
 
 -----------------------------------------------------------
--- General
+--- General
 -----------------------------------------------------------
 opt.encoding = "utf-8" -- Just in case
 opt.mouse = "a" -- Enable mouse support
@@ -20,7 +20,7 @@ opt.swapfile = false -- Don't use swapfile
 opt.hlsearch = true -- Highlight all matches on previous search pattern
 
 -----------------------------------------------------------
--- Neovim UI
+--- Neovim UI
 -----------------------------------------------------------
 opt.number = true -- Show line number
 opt.relativenumber = true -- Set relative numbered lines
@@ -41,9 +41,14 @@ opt.splitright = true -- Vertical split to the right
 opt.splitbelow = true -- Horizontal split to the bottom
 opt.undofile = true -- Enable persistent undo
 opt.termguicolors = true -- Sets terminal GUI colors (any terminal should support this)
+--opt.guicursor = {
+--  "n-v-c:block,i-ci-ve:block,r-cr:block,o:block",
+--  "a:blinkwait100-blinkoff100-blinkon100",
+--  "sm:block-blinkwait100-blinkoff100-blinkon100",
+--}
 
 -----------------------------------------------------------
--- Tabs, indent
+--- Tabs, indent
 -----------------------------------------------------------
 opt.shiftwidth = 2 -- Shift 4 spaces when tab
 opt.tabstop = 2 -- 1 tab == 2 spaces
@@ -54,7 +59,7 @@ opt.breakindent = true -- Tab wrapped lines
 opt.showbreak = "  " -- Set indent of wrapped lines
 
 -----------------------------------------------------------
--- Memory, CPU
+--- Memory, CPU
 -----------------------------------------------------------
 opt.updatetime = 300 -- Time to wait for trigger an event (in milliseconds)
 opt.timeoutlen = 100 -- Time to wait for a mapped sequence to complete (in milliseconds)
@@ -62,19 +67,21 @@ opt.backup = false -- Creates a backup file
 opt.writebackup = false -- If a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 
 -----------------------------------------------------------
--- Python 
+--- Python
 -----------------------------------------------------------
---g.python3_host_prog = "/Users/ytoga/.virtualenvs/neovim/bin/python" (also valid if u don't need to change between python versions)
-g.python3_host_prog = "/Users/ytoga/.pyenv/versions/3.12.6/bin/python"
+--(good if you don't need to change between python versions)
+g.python3_host_prog = "/Users/ytoga/.virtualenvs/neovim/bin/python"
+--(good if you need to change between python versions)
+--g.python3_host_prog = "/Users/ytoga/.pyenv/versions/3.13.1/bin/python"
 
 -----------------------------------------------------------
--- LaTeX global options (ver vimtex.lua)
+--- LaTeX global options (ver vimtex.lua)
 -----------------------------------------------------------
 g.tex_flavor = "latex"
 g.tex_indent_items = 0 -- Turn off enumerate indent
 g.tex_indent_brace = 0 -- Turn off brace indent
 
 -----------------------------------------------------------
--- Prelude
+--- Prelude
 -----------------------------------------------------------
 opt.shortmess:append("c") -- Don't pass messages to |ins-completion-menu|
